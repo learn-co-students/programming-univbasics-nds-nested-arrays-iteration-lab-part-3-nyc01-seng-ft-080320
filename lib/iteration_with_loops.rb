@@ -1,13 +1,13 @@
-def join_nested_strings(src)
-  penultimate_array_before_string_conversion = Array.new
-  row_index = 0
-  while row_index < src.count do
-    index_counter = 0
-    if src[row_index][index_counter].type == String do
-      penultimate_array_before_string_conversion << src[row_index][index_counter]
-      index_counter += 1
+require 'pry'
+def join_nested_strings(aoa)
+  simplify_it = aoa.flatten
+  index_counter = 0
+  while index_counter < simplify_it.length
+    if simplify_it[index_counter].instance_of? Integer
+      simplify_it.delete_at(index_counter)
     end
-    row_index +=1
+    index_counter += 1
   end
-  penultimate_array_before_string_conversion.join(" ")
+  simplify_it.join(' ')
 end
+binding.pry
